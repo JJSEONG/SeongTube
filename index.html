@@ -12,11 +12,17 @@
   <main>
     <h1>SeongTube</h1>
     <section>
-      <h2 class="blind">성튜브 콘텐츠</h2>
+      <h2 class="blind">SeongTube 콘텐츠</h2>
       <div class="search_bar">
-        <input type="text" name="search" id="search" placeholder="검색" autocomplete="off">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="검색"
+          autocomplete="off"
+        />
         <label for="search">
-          <a href="#" class="btn_search">
+          <a href="#none" class="btn_search">
             <svg
               viewBox="0 0 24 24"
               preserveAspectRatio="xMidYMid meet"
@@ -32,19 +38,19 @@
       </div>
       <div class="contents list">
         <figure>
-          <a href="#" class="btn_view">
+          <a href="#none" class="btn_view">
             <picture>
-              <source srcset="./assets/sample.jpg" type="image/webp">
-              <source srcset="./assets/sample.jpg" type="image/jpg">
-              <img src="./assets/sample.jpg" alt="sample">
+              <source srcset="./assets/sample.jpg" type="image/webp" />
+              <source srcset="./assets/sample.jpg" type="image/jpg" />
+              <img src="./assets/sample.jpg" alt="sample" />
             </picture>
           </a>
           <figcaption>
-            <i><img src="./assets/id.png" alt=""></i>
-            <span class="description">
-              <strong>Lorem Ipsum Powerful movie</strong>
-              <em>Cold water</em>
-              <span>1.1M views, 4 Month ago</span>
+            <i><img src="./assets/id.png" alt="icon" /></i>
+            <span class="description"
+              ><strong>Lorem Ipsum Powerful movie</strong>
+              <em>Cold Water</em>
+              <span>1.1M views, 4 months ago</span>
             </span>
           </figcaption>
         </figure>
@@ -138,6 +144,44 @@
               <span>3.8M views, 18 days ago</span>
             </span>
           </figcaption>
+        </figure>
+      </div>
+      <div class="contents view">
+        <figure>
+          <video autoplay>
+            <source src="./assets/sample.mp4" type="video/mp4" />
+          </video>
+          <figcaption>
+            <span class="description"
+              ><strong
+                >The harder you work, the more likely you can reach the
+                goal</strong
+              >
+            </span>
+          </figcaption>
+          <span class="controls">
+            <progress
+              min="0"
+              max="100"
+              value="0"
+              class="js-progress"
+            ></progress>
+            <button type="button" class="js-replay">Replay</button>
+            <button type="button" class="js-play">Play</button>
+            <button type="button" class="js-stop">Stop</button>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.1"
+              value="1"
+              class="js-volume"
+            />
+            <button type="button" class="js-mute">Mute</button>
+            <button type="button" class="js-fullScreen" accesskey="T">
+              FullScreen
+            </button>
+          </span>
         </figure>
       </div>
     </section>
