@@ -11,6 +11,11 @@
   const init = () => {
     $search.addEventListener('keyup', search)
     $searchButton.addEventListener('click', search)
+    for (let i = 0; i < $list.length; i++) {
+      const $target = $list[i].querySelector('picture')
+      $target.addEventListener('mouseover', onMouseOver)
+      $target.addEventListener('mouseout', onMouseOut)
+    }
   }
 
   const search = () => {
@@ -24,6 +29,16 @@
         $list[i].style.display = 'none'
       }
     }
+  }
+  
+  const onMouseOver = (e) => {
+    const webpPlay = e.target.parentNode.querySelector('source')
+    webpPlay.setAttribute('srcset', './assets/sample.webp')
+  }
+
+  const onMouseOut = (e) => {
+    const webpPlay = e.target.parentNode.querySelector('source')
+    webpPlay.setAttribute('srcset', './assets/sample.jpg')
   }
 
   init()
