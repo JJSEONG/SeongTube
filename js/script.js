@@ -95,19 +95,31 @@
     })
 
     $player.addEventListener('timeupdate', setProgress)
-    $player.addEventListener('play', buttonChange($btnPlay, 'pause'))
-    $player.addEventListener('pause', buttonChange($btnPlay, 'play'))
-    $player.addEventListener('volumeChange', () => {
-      $player.muted ? buttonChange($btnMute, 'unmute') : buttonChange($btnMute, 'mute')
-    })
-    $player.addEventListener('ended', $player.pause())
+    // $player.addEventListener('play', buttonChange($btnPlay, 'pause'))
+    // $player.addEventListener('pause', buttonChange($btnPlay, 'play'))
+    // $player.addEventListener('volumeChange', () => {
+    //   $player.muted
+    //    ? buttonChange($btnMute, 'unmute')
+    //    : buttonChange($btnMute, 'mute')
+    // })
+    // $player.addEventListener('ended', $player.pause())
     $progress.addEventListener('click', getCurrent)
-    $btnPlay.addEventListener('click', playVideo)
-    $btnStop.addEventListener('click', stopVideo)
-    $btnMute.addEventListener('click', mute)
-    $fullScreen.addEventListener('click', fullScreen)
+    // $btnPlay.addEventListener('click', playVideo)
+    // $btnStop.addEventListener('click', stopVideo)
+    // $btnMute.addEventListener('click', mute)
+    // $fullScreen.addEventListener('click', fullScreen)
   }
-  
+
+  const getCurrent = (e) => {
+    let percent = e.offsetX / $progress.offsetWidth
+    $player.currentTime = percent * $player.duration
+    e.target.value = Math.floor(percent / 100)
+  }
+
+  const setProgress = () => {
+    let percentage = Math.floor(100 / $player.duration) * $player.currentTime
+    $progress.value = percentage
+  }
 
   init()
 })()
