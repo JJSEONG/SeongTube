@@ -102,10 +102,11 @@
     //    ? buttonChange($btnMute, 'unmute')
     //    : buttonChange($btnMute, 'mute')
     // })
-    // $player.addEventListener('ended', $player.pause())
+    $player.addEventListener('ended', $player.pause())
     $progress.addEventListener('click', getCurrent)
     $btnPlay.addEventListener('click', playVideo)
     $btnStop.addEventListener('click', stopVideo)
+    $btnReplay.addEventListener('click', replayVideo)
     // $btnMute.addEventListener('click', mute)
     // $fullScreen.addEventListener('click', fullScreen)
   }
@@ -135,6 +136,17 @@
     $player.pause()
     $player.currentTime = 0
     buttonChange($btnPlay, 'play')
+  }
+
+  const resetPlayer = () => {
+    $progress.value = 0
+    $player.currentTime = 0
+  }
+
+  const replayVideo = () => {
+    resetPlayer()
+    $player.play()
+    buttonChange($btnPlay, 'pause')
   }
 
   init()
