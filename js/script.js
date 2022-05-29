@@ -34,9 +34,11 @@
       if(isView) {
         getViewPage()
       } else {
-        getListView()
+        getListPage()
       }
     })
+
+    viewPageEvent()
   }
 
   const search = () => {
@@ -78,10 +80,34 @@
     get('.view').style.display = 'flex'
   }
 
-  const getListView = () => {
+  const getListPage = () => {
     get('.list').style.display = 'flex'
     get('.view').style.display = 'none'
   }
+
+  const buttonChange = (btn, value) => {
+    btn.innerHTML = value
+  }
+
+  const viewPageEvent = () => {
+    $volume.addEventListener('change', (e) => {
+      $player.volume = e.target.value
+    })
+
+    $player.addEventListener('timeupdate', setProgress)
+    $player.addEventListener('play', buttonChange($btnPlay, 'pause'))
+    $player.addEventListener('pause', buttonChange($btnPlay, 'play'))
+    $player.addEventListener('volumeChange', () => {
+      $player.muted ? buttonChange($btnMute, 'unmute') : buttonChange($btnMute, 'mute')
+    })
+    $player.addEventListener('ended', $player.pause())
+    $progress.addEventListener('click', getCurrent)
+    $btnPlay.addEventListener('click', playVideo)
+    $btnStop.addEventListener('click', stopVideo)
+    $btnMute.addEventListener('click', mute)
+    $fullScreen.addEventListener('click', fullScreen)
+  }
+  
 
   init()
 })()
