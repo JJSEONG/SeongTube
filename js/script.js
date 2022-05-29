@@ -97,18 +97,18 @@
     $player.addEventListener('timeupdate', setProgress)
     $player.addEventListener('play', buttonChange($btnPlay, 'pause'))
     $player.addEventListener('pause', buttonChange($btnPlay, 'play'))
-    // $player.addEventListener('volumeChange', () => {
-    //   $player.muted
-    //    ? buttonChange($btnMute, 'unmute')
-    //    : buttonChange($btnMute, 'mute')
-    // })
+    $player.addEventListener('volumeChange', () => {
+      $player.muted
+       ? buttonChange($btnMute, 'unmute')
+       : buttonChange($btnMute, 'mute')
+    })
     $player.addEventListener('ended', $player.pause())
     $progress.addEventListener('click', getCurrent)
     $btnPlay.addEventListener('click', playVideo)
     $btnStop.addEventListener('click', stopVideo)
     $btnReplay.addEventListener('click', replayVideo)
-    // $btnMute.addEventListener('click', mute)
-    // $fullScreen.addEventListener('click', fullScreen)
+    $btnMute.addEventListener('click', mute)
+    $fullScreen.addEventListener('click', fullScreen)
   }
 
   const getCurrent = (e) => {
@@ -147,6 +147,34 @@
     resetPlayer()
     $player.play()
     buttonChange($btnPlay, 'pause')
+  }
+
+  const mute = () => {
+    if($player.muted) {
+      buttonChange($btnMute, 'mute')
+      $player.muted = false
+    } else {
+      buttonChange($btnMute, 'unmute')
+      $player.muted = true
+    }
+  }
+
+  const fullScreen = () => {
+    if($player.requestFullscreen) {
+      if(document.fullscreenElement) {
+        document.cancelFullScreen()
+      } else {
+        $player.requestFullscreen()
+      }
+    } else if($player.msRequestFullscreen) {
+      if (document.msRequestFullscreen) {
+        document.msExitFullscreen()
+      } else {
+        $player.msRequestFullscreen()
+      }
+    } else {
+      alert ('Not Supported')
+    }
   }
 
   init()
