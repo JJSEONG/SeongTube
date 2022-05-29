@@ -8,6 +8,15 @@
   const $list = getAll('.contents.list figure')
   const $searchButton = get('.btn_search')
 
+  const $player = get('.view video')
+  const $btnPlay = get('.js-play')
+  const $btnReplay = get('.js-replay')
+  const $btnStop = get('.js-stop')
+  const $btnMute = get('.js-mute')
+  const $progress = get('.js-progress')
+  const $volume = get('.js-volume')
+  const $fullScreen = get('.js-fullScreen')
+
   const init = () => {
     $search.addEventListener('keyup', search)
     $searchButton.addEventListener('click', search)
